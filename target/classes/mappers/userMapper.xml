@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.kccistc.spring.mapper.userMapper">
+
+	<select id="login" resultType="UserVO">
+		select * from usertable where userId = #{userId} and password = #{password}
+	</select>
+	<update id="keepLogin">
+		update usertable set sessionKey = #{sessionId}, sessionLimit = #{next} where userId = #{userId} 
+	</update>
+	
+	<select resultType="UserVO" id="checkUserWithSessionKey">
+		select * from usertable where sessionKey = #{value} and sessionlimit > now() 
+	</select>
+	
+	<select id="idCheck" resultType="UserVO">
+		select userId from usertable where userId = #{userId}
+	</select>
+	
+	<insert id="insertUser" parameterType="UserVO">
+		insert into usertable 
+		values (#{userId}, #{password}, #{name}, #{birthday}, #{gender}, #{emailId}, #{emailDomain}, #{SNS}, #{phoneNumber}, null, null)
+	</insert>
+</mapper>
