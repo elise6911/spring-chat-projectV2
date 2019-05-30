@@ -22,6 +22,6 @@
 	
 	<insert id="insertUser" parameterType="UserVO">
 		insert into usertable 
-		values (#{userId}, #{password}, #{name}, #{birthday}, #{gender}, #{emailId}, #{emailDomain}, #{SNS}, #{phoneNumber}, null, null)
+		values (null, #{userId}, #{password}, #{name}, #{birthday}, #{gender}, #{emailId}, #{emailDomain}, #{SNS}, #{phoneNumber}, null, null)
 	</insert>
 </mapper>
