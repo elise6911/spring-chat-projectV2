@@ -1,22 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../include/header-dev.jsp" %>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<form id="signup" name="signup" method="post" action="signupPost">
-	ID : <input type="text" id="userId" name="userId" oninput="idCheck()">
-	<span id="idCheckMsg"></span><br>
-	PW : <input type="password" id="password" name="password" onchange="isSame()"><br>
-	PW 확인 : <input type="password" id="passwordCheck" name="passwordCheck" oninput="isSame()">
-	<span id="same"></span><br>
-	이름 : <input type="text" name="name"><br>
-	생년월일 : <input type="date" name="datepicker" id="birthday" value=""><br>
-	성별 : <input type="radio" name="gender" value="M" checked="checked">남
-		<input type="radio" name="gender" value="F">여
-		<span id="gender"></span>
-	<br>
-	이메일<input type="text" id="emailId" name="emailId" onfocus="this.value=''">@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AdminLTE 2 | Registration Page</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="../resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    <link href="../resources/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+    
+    
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  </head>
+  <body class="register-page">
+    <div class="register-box">
+      <div class="register-logo">
+        <a href="home-dev"><b>Chat</b>&Study</a>
+      </div>
+
+      <div class="register-box-body">
+        <p class="login-box-msg">Register a new membership</p>
+        <form id="signup" name="signup" method="post" action="signupPost">
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="ID" id="userId" name="userId" oninput="idCheck()"/>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+         </div>
+		<span class="glyphicon glyphicon-user form-control-feedback" id="idCheckMsg"></span><br>
+		<div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" id="password" name="password" onchange="isSame()"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+	<div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password Check" id="passwordCheck" name="passwordCheck" oninput="isSame()"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+	<span class="glyphicon glyphicon-user form-control-feedback"  id="same"></span><br>
+	<div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Name"  name="name"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          
+          <div class="form-group has-feedback">
+            <input type="date" class="form-control" name="datepicker" id="birthday" value=""/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          
+          <div class="form-group has-feedback">
+            <input type="radio" name="gender" value="M" checked="checked">남
+			<input type="radio" name="gender" value="F">여
+            <span id="gender" class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+			
+<div class="form-group has-feedback">
+            <input type="text" id="emailId" name="emailId" onfocus="this.value=''"/>@
 	<input type="text" id="emailDomain" name="emailDomain" value="" disabled placeholder="naver.com">
 	<select id="selectmenu" name="select" onchange="emailChanged()">
 		<option value="0" selected="selected">선택하세요</option>
@@ -26,13 +70,49 @@
 	    <option value="nate.com">nate.com</option>
    		<option value="9" >직접입력</option>
 	</select><br>
-	SNS : <input type="text" id="SNS" name="SNS"><br>
-	핸드폰번호 : <input type="text" id="phoneNumber" name="phoneNumber" placeholder="010-0000-0000"><br>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+         </div>
+         <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="SNS" id="SNS" name="SNS"/>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="010-0000-0000"/>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+
 	<input type="submit" id="submit" disabled="disabled" value="회원가입">
 	<input type="reset" value="취소">
 </form>
+   
 
-<script>
+        <div class="social-auth-links text-center">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
+          <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign up using Google+</a>
+        </div>
+
+        <a href="login" class="text-center">I already have a membership</a>
+      </div><!-- /.form-box -->
+    </div><!-- /.register-box -->
+
+    <!-- jQuery 2.1.3 -->
+    <script src="resources/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- iCheck -->
+    <script src="resources/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
+    <script>
 $(document).ready(function () {
     
   });
@@ -52,6 +132,8 @@ $(document).ready(function () {
 		url : '/user/idCheck',
 		type : 'post',
 		data : query,
+		
+		
 		success: function(data){
 			if( data ){
 				idCheck = true;
@@ -127,5 +209,8 @@ $(document).ready(function () {
   
 </script>
 
+    
+  </body>
+</html>
 
-<%@include file="../include/footer-dev.jsp" %>
+

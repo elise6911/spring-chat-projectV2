@@ -16,7 +16,7 @@ public interface ChatDAO {
 	public List<ChatRoomVO> getRoomList(String str)throws Exception;
 	public List<ChatRoomVO> getRoomList2(String str)throws Exception;
 	public MessageVO getRecentMessage(String str)throws Exception;
-	//public String isGetMessageList(String str)throws Exception;
+	
 	
 	public String getTutorId(String str)throws Exception;
 	public List<ChatRoomVO> getRoomListTutor(String str)throws Exception;

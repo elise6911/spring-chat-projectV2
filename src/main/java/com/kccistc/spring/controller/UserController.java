@@ -34,12 +34,12 @@ public class UserController {
 	@Inject
 	private UserService service;
 	
-	// 로그인 화면
+	// login GET
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto ) {
 		
 	}
-	// 로그인 처리
+	// login POST
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(LoginDTO dto, HttpServletRequest req, Model model, RedirectAttributes rttr) throws Exception {
 		HttpSession session = req.getSession();
@@ -121,6 +121,11 @@ public class UserController {
 		return "user/signup";
 	}
 	
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public String testGet()  throws Exception{
+		logger.info("testtttt");
+		return "user/test";
+	}
 	@RequestMapping(value="/signupPost", method=RequestMethod.POST)
 	public String signupPost(UserVO vo, @RequestParam("datepicker") String birthday)  throws Exception{
 		

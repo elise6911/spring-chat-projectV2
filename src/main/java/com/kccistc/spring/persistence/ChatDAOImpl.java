@@ -21,9 +21,9 @@ public class ChatDAOImpl implements ChatDAO {
 	@Override
 	public void createRoom(ChatRoomVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("생성 전.....");
+		System.out.println("create chat room ...... ");
 		session.insert(namespace+".createRoom" , vo);
-		System.out.println("방이 생성되었습니다.");
+		System.out.println("insert DB success.....");
 	}
 
 	@Override

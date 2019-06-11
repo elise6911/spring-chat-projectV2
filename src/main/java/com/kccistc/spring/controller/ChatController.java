@@ -26,7 +26,7 @@ public class ChatController {
 	
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
 	public String chat(Locale locale, Model model) {
-		logger.info("ì±„íŒ…", locale);
+		logger.info("Ã¤ÆÃ", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -48,18 +48,18 @@ public class ChatController {
 	}
 	
 	@RequestMapping(value = "/createChat", method = RequestMethod.GET)
-	public String createChatRoom(ChatRoomVO chat) throws Exception {
+	public void createChatRoom(ChatRoomVO chat) throws Exception {
 		
 		logger.info("create chat room GET............");
-		return "chat/createChatPost";
 	}
 	
-	@RequestMapping(value = "/createChatPost", method = RequestMethod.POST)
+	@RequestMapping(value = "/createChat", method = RequestMethod.POST)
 	public String createChatRoomPost(ChatRoomVO chat) throws Exception {
 		
 		service.create(chat);
 		logger.info("create chat room POST............");
-		return "chat/chatRoomList";
+		
+		return "redirect:/chat/chatRoomList";
 	}
 	
 	@RequestMapping(value = "/chatTest", method = RequestMethod.POST)
